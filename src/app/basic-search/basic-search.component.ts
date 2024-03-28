@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { startWith, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-basic-search',
@@ -17,10 +17,7 @@ export class BasicSearchComponent {
     validators: [Validators.required]
   });
 
-  onSignatureNameChange$ = this.searchTerm.valueChanges.pipe(
-    tap(output => this.newSearchTerm.emit(output)),
-    startWith('')
-  );
+  onSignatureNameChange$ = this.searchTerm.valueChanges.pipe(tap(output => this.newSearchTerm.emit(output)));
 
   @Output() newSearchTerm = new EventEmitter<string>();
 }
