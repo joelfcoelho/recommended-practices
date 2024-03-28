@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageComponentComponent } from './image-component.component';
+import { BasicSearchComponent } from './basic-search.component';
 
-describe('ImageComponentComponent', () => {
-  let component: ImageComponentComponent;
-  let fixture: ComponentFixture<ImageComponentComponent>;
+describe('BasicSearchComponent', () => {
+  let component: BasicSearchComponent;
+  let fixture: ComponentFixture<BasicSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ImageComponentComponent]
+      imports: [BasicSearchComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ImageComponentComponent);
+    fixture = TestBed.createComponent(BasicSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
