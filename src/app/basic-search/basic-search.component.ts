@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
@@ -17,7 +18,7 @@ export class BasicSearchComponent {
     validators: [Validators.required]
   });
 
-  onSignatureNameChange$ = this.searchTerm.valueChanges.pipe(tap(output => this.newSearchTerm.emit(output)));
+  onSignatureNameChange = toSignal(this.searchTerm.valueChanges.pipe(tap(output => this.newSearchTerm.emit(output))));
 
   @Output() newSearchTerm = new EventEmitter<string>();
 }
