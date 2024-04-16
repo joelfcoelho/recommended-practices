@@ -1,0 +1,29 @@
+<form [formGroup]="userForm">
+  <input type="text" placeholder="First name" formControlName="firstName" />
+
+  @if (userForm.controls.firstName.touched) {
+    @if (userForm.controls.firstName.errors?.['required']) {
+      {{ 'missing first name' }}
+    }
+
+    @if (userForm.controls.firstName.errors?.['minlength']) {
+      {{ 'min length' }}
+    }
+  }
+
+  {{ userForm.controls.firstName.errors | json }}
+
+  <br />
+
+  <input type="text" placeholder="Last name" formControlName="lastName" style="margin-top: 1rem" />
+
+  <br />
+
+  <input type="text" placeholder="Email" formControlName="email" style="margin-top: 1rem" />
+
+  {{ userForm.controls.email.errors | json }}
+
+  <br />
+</form>
+
+{{ userData() | json }}
