@@ -24,6 +24,10 @@
   {{ userForm.controls.email.errors | json }}
 
   <br />
+
+  <!--  <app-select (selectionChange)="updateForm($event)"></app-select>-->
+  Custom select Component <br />
+  <app-custom-select formControlName="gender"></app-custom-select>
 </form>
 
 {{ userData() | json }}

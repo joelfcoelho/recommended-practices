@@ -14,7 +14,6 @@ export class CounterComponent {
   private counter = 1;
 
   get count(): number {
-    console.log('CounterComponent')
     return this.counter;
   }
 }

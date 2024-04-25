@@ -1,10 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component, importProvidersFrom, signal } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import 'zone.js';
 import { ImageComponentComponent } from './app/image-component/image-component.component';
 import { BasicSearchComponent } from './app/basic-search/basic-search.component';
 import { TodoListComponent } from './app/todo-list/todo-list.component';
 import { CounterComponent } from './app/counter/counter.component';
+import { CustomSelectComponent } from './app/custom-select-component/custom-select.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormComponentComponent } from './app/reactive-form-component/reactive-form-component.component';
 
 export type TodoItem = { title: string };
 
@@ -28,7 +31,7 @@ const TODO_LIST: TodoItem[] = [
     <app-counter></app-counter>
 
     <br>
-    
+
     <app-basic-search (newSearchTerm)="searchText.set($event)" />
 
     <br />
@@ -38,10 +41,19 @@ const TODO_LIST: TodoItem[] = [
     <app-image-component [image]="'https://app-staging.cognism.com/api/logotix/deloitte.com'" />
 
     <br />
+    <!--    <app-custom-select />-->
+    <app-reactive-form-component></app-reactive-form-component>
   `,
-  imports: [ImageComponentComponent, BasicSearchComponent, TodoListComponent, CounterComponent]
+  imports: [
+    ImageComponentComponent,
+    BasicSearchComponent,
+    TodoListComponent,
+    CounterComponent,
+    CustomSelectComponent,
+    ReactiveFormComponentComponent
+  ]
 })
-export class App {
+export class AppComponent {
   name = 'Angular';
 
   readonly todos = TODO_LIST;
@@ -49,4 +61,6 @@ export class App {
   searchText = signal('');
 }
 
-bootstrapApplication(App);
+bootstrapApplication(AppComponent, {
+  providers: [importProvidersFrom([BrowserAnimationsModule])]
+}).then();

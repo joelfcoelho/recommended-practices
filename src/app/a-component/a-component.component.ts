@@ -11,7 +11,6 @@ export class NameAComponent {
   private componentAName = 'Lasha';
 
   get name(): string {
-    console.log('NameAComponent')
     return this.componentAName;
   }
 
